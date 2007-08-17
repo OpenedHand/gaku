@@ -1,0 +1,34 @@
+Metadata panel between buttons and playlist
+===
+
++-----+  Song Title
+|cover|  Artist
++-----+  Progress/Duration
+
+Some form of button or something to turn the progress display into a seek bar
+
+
+Menu bar
+===
+
+Playlist
+- Open
+- Save
+- ---
+- Remove
+- Clear
+- ---
+- Repeat
+- Shuffle
+
+
+Should the Add button be a combo menu button like on toolbars, for selecting
+between add song/album/playlist when we've got a library.
+
+Volume control
+
+Probably ifdef for maemo, include playbinmaemo source.
+http://gmyth.svn.sourceforge.net/viewvc/gmyth/trunk/gst-gmyth/playbinmaemo/gstplaybinmaemo.c
+
+
+Rename to uta - "song"
