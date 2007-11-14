@@ -7,4 +7,4 @@ Exec=gaku
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=GNOME;GTK;AudioVideo;Audio;Player;
+Categories=GTK;AudioVideo;Audio;Player;
