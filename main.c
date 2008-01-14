@@ -836,8 +836,10 @@ main (int argc, char **argv)
                                       TRUE);
         gtk_tree_view_set_reorderable (GTK_TREE_VIEW (data->tree_view),
                                        TRUE);
+#if GTK_CHECK_VERSION (2, 10, 0)
         gtk_tree_view_set_rubber_banding (GTK_TREE_VIEW (data->tree_view),
                                           TRUE);
+#endif
 
         /**
          * Set up list store.
