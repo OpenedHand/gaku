@@ -93,6 +93,7 @@ update_title (AppData *data, const char *title)
         if (title) {
                 win_title = g_strdup_printf ("%s - Music Player", title);
                 gtk_window_set_title (GTK_WINDOW (data->window), win_title);
+                g_free (win_title);
         } else {
                 gtk_window_set_title (GTK_WINDOW (data->window), "Music Player");
         }
