@@ -502,12 +502,12 @@ audio_player_class_init (AudioPlayerClass *klass)
 {
         GObjectClass *object_class;
 
-	object_class = G_OBJECT_CLASS (klass);
+        object_class = G_OBJECT_CLASS (klass);
 
-	object_class->set_property = audio_player_set_property;
-	object_class->get_property = audio_player_get_property;
-	object_class->dispose      = audio_player_dispose;
-	object_class->finalize     = audio_player_finalize;
+        object_class->set_property = audio_player_set_property;
+        object_class->get_property = audio_player_get_property;
+        object_class->dispose      = audio_player_dispose;
+        object_class->finalize     = audio_player_finalize;
 
         g_type_class_add_private (klass, sizeof (AudioPlayerPrivate));
 
