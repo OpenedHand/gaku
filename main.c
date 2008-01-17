@@ -221,12 +221,15 @@ next (AppData *data)
         gtk_tree_model_get_iter (tree_model, &iter, path);
         gtk_tree_path_free (path);
         
-        if (!gtk_tree_model_iter_next (tree_model, &iter))
+        if (gtk_tree_model_iter_next (tree_model, &iter)) {
+                set_playing_row (data, &iter);
+                return TRUE;
+        } else {
+                set_playing_row (data, NULL);
+                gtk_toggle_button_set_active
+                        (GTK_TOGGLE_BUTTON (data->play_pause_button), FALSE);
                 return FALSE;
-
-        set_playing_row (data, &iter);
-        
-        return TRUE;
+        }
 }
 
 /**
