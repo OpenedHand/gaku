@@ -883,11 +883,17 @@ main (int argc, char **argv)
          * Add any files specified on the command line.
          */
         for (i = 1; i < argc; i++) {
-          char *uri;
-          uri = g_filename_to_uri (argv[i], NULL, NULL);
-          if (uri) {
-            add_uri (data, uri);
-            g_free (uri);
+          if (strstr (argv[i], "://")) {
+            /* This argument looks like a URI */
+            add_uri (data, argv[i]);
+          } else {
+            /* This argument is probably a filename, convert to URI */
+            char *uri;
+            uri = g_filename_to_uri (argv[i], NULL, NULL);
+            if (uri) {
+              add_uri (data, uri);
+              g_free (uri);
+            }
           }
         }
 
