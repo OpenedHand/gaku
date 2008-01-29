@@ -671,6 +671,7 @@ main (int argc, char **argv)
         AppData *data;
         GtkWidget *vbox, *hbox, *bbox, *scrolled_window;
         GtkWidget *button, *image;
+        int i;
 
         /**
          * Initialize APIs.
@@ -877,6 +878,18 @@ main (int argc, char **argv)
          * Show it all.
          **/
         gtk_widget_show_all (data->window);
+
+        /**
+         * Add any files specified on the command line.
+         */
+        for (i = 1; i < argc; i++) {
+          char *uri;
+          uri = g_filename_to_uri (argv[i], NULL, NULL);
+          if (uri) {
+            add_uri (data, uri);
+            g_free (uri);
+          }
+        }
 
         /**
          * Enter main loop.
