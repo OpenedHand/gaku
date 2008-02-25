@@ -8,3 +8,4 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=GTK;AudioVideo;Audio;Player;
+X-MB-Single-Instance=true
