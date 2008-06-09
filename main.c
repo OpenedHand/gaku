@@ -364,11 +364,16 @@ tag_reader_uri_scanned_cb (TagReader  *tag_reader,
                         /**
                          * Found a matching row.
                          **/
-                        gtk_list_store_set (data->list_store,
-                                            &iter,
-                                            COL_TITLE, title,
-                                            COL_ARTIST, artist,
-                                            -1);
+                        if (title)
+                                gtk_list_store_set (data->list_store,
+                                                    &iter,
+                                                    COL_TITLE, title,
+                                                    -1);
+                        if (artist)
+                                gtk_list_store_set (data->list_store,
+                                                    &iter,
+                                                    COL_ARTIST, artist,
+                                                    -1);
 
                         if (iter_is_playing_row (data, &iter)) {
                                 /**
