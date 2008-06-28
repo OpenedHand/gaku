@@ -216,16 +216,11 @@ bus_message_state_change_cb (GstBus      *bus,
                                                  NULL);
                 } else {
                         /**
-                         * Could not query for ability to seek. Determine
-                         * using URI.
+                         * Could not query for ability to seek. Assume seek
+                         * is supported.
                          **/
 
-                        if (g_str_has_prefix (audio_player->priv->uri,
-                                              "http://")) {
-                                audio_player->priv->can_seek = FALSE;
-                        } else {
-                                audio_player->priv->can_seek = TRUE;
-                        }
+                        audio_player->priv->can_seek = TRUE;
                 }
 
                 gst_query_unref (query);

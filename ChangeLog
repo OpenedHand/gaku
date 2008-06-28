@@ -1,0 +1,5 @@
+2008-06-28  Jorn Baayen  <jorn@openedhand.com>
+
+	* audio-player.c (bus_message_state_change_cb):
+
+	Do not disallow seeking of http streams any longer.
