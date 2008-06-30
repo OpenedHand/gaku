@@ -21,19 +21,19 @@
 
 #include <gst/gst.h>
 #include <gtk/gtk.h>
+#include <libowl-av/owl-audio-player.h>
+#include <libowl-av/owl-tag-reader.h>
 #include <string.h>
 
-#include "audio-player.h"
 #include "playlist-parser.h"
-#include "tag-reader.h"
 
 typedef struct {
         /**
          * Our special objects.
          **/
-        AudioPlayer    *audio_player;
+        OwlAudioPlayer *audio_player;
         PlaylistParser *playlist_parser;
-        TagReader      *tag_reader;
+        OwlTagReader   *tag_reader;
 
         /**
          * UI objects.
@@ -156,7 +156,7 @@ set_playing_row (AppData     *data,
                                     COL_TITLE, &title,
                                     -1);
 
-                audio_player_set_uri (data->audio_player, uri);
+                owl_audio_player_set_uri (data->audio_player, uri);
 
                 update_title (data, title);
 
@@ -236,8 +236,8 @@ next (AppData *data)
  * End of stream reached.
  **/
 static void
-eos_cb (AudioPlayer *player,
-        AppData     *data)
+eos_cb (OwlAudioPlayer *player,
+        AppData        *data)
 {
         /**
          * Go to next song.
@@ -296,7 +296,7 @@ add_uri (AppData    *data,
         /**
          * Feed to tag reader.
          **/
-        tag_reader_scan_uri (data->tag_reader, uri);
+        owl_tag_reader_scan_uri (data->tag_reader, uri);
 
         /**
          * Play this song if nothing is playing.
@@ -313,11 +313,11 @@ add_uri (AppData    *data,
  * TagReader is done scanning an URI. Update UI.
  **/
 static void
-tag_reader_uri_scanned_cb (TagReader  *tag_reader,
-                           const char *uri,
-                           GError     *error,
-                           GstTagList *tag_list,
-                           AppData    *data)
+tag_reader_uri_scanned_cb (OwlTagReader *tag_reader,
+                           const char   *uri,
+                           GError       *error,
+                           GstTagList   *tag_list,
+                           AppData      *data)
 {
         GtkTreeModel *tree_model;
         GtkTreeIter iter;
@@ -411,7 +411,7 @@ static void
 play_pause_button_toggled_cb (GtkToggleButton *button,
                               AppData         *data)
 {
-        audio_player_set_playing (data->audio_player, button->active);
+        owl_audio_player_set_playing (data->audio_player, button->active);
 }
 
 /**
@@ -692,7 +692,7 @@ main (int argc, char **argv)
         /**
          * Set up AudioPlayer.
          **/
-        data->audio_player = audio_player_new ();
+        data->audio_player = owl_audio_player_new ();
 
         g_signal_connect (data->audio_player,
                           "eos",
@@ -717,7 +717,7 @@ main (int argc, char **argv)
         /**
          * Set up TagReader.
          **/
-        data->tag_reader = tag_reader_new ();
+        data->tag_reader = owl_tag_reader_new ();
 
         g_signal_connect (data->tag_reader,
                           "uri-scanned",

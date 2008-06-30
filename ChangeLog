@@ -1,3 +1,17 @@
+2008-06-30  Jorn Baayen  <jorn@openedhand.com>
+
+	* Makefile.am:
+	* audio-player.c:
+	* audio-player.h:
+	* configure.ac:
+	* main.c (set_playing_row), (eos_cb), (add_uri),
+	(tag_reader_uri_scanned_cb), (play_pause_button_toggled_cb),
+	(main):
+	* tag-reader.c:
+	* tag-reader.h:
+
+	Use libowl-av.
+
 2008-06-28  Jorn Baayen  <jorn@openedhand.com>
 
 	* audio-player.c (bus_message_state_change_cb):
