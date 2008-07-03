@@ -321,7 +321,7 @@ tag_reader_uri_scanned_cb (OwlTagReader *tag_reader,
 {
         GtkTreeModel *tree_model;
         GtkTreeIter iter;
-        char *title, *artist;
+        char *title = NULL, *artist = NULL;
         
         if (error) {
                 g_warning (error->message);

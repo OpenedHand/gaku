@@ -1,3 +1,10 @@
+2008-07-03  Jorn Baayen  <jorn@openedhand.com>
+
+	* main.c (tag_reader_uri_scanned_cb):
+
+	Initialise title and artist variables to NULL.
+	Reported by Tim Müller <tim.muller@collabora.co.uk>.
+
 2008-06-30  Jorn Baayen  <jorn@openedhand.com>
 
 	* Makefile.am:
